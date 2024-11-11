@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 int main()
 {
@@ -30,15 +31,15 @@ int main()
     }
     if (a == b && b == c && a == c)
         printf("Equilateral triangle\n");
-    else if (a == b || b == c || a == c)
-        printf("Isosceles triangle\n");
-    else if (a * a + b * b == c * c)
+    else if (fabs(a * a + b * b - c * c) < 1e-3)
     {
         if (a == b || b == c || a == c)
             printf("Isosceles right triangle\n");
         else
             printf("Right-angled triangle\n");
     }
+    else if (a == b || b == c || a == c)
+        printf("Isosceles triangle\n");
     else
         printf("Scalene triangle\n");
 }
