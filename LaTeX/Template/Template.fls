@@ -1,9 +1,9 @@
-PWD /Users/peterwind/Script/Learning/LaTeX/Report
+PWD /Users/peterwind/Script/Learning/LaTeX/Template
 INPUT /usr/local/texlive/2025basic/texmf.cnf
 INPUT /usr/local/texlive/2025basic/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025basic/texmf-var/web2c/xetex/xelatex.fmt
-INPUT /Users/peterwind/Script/Learning/LaTeX/Report/report.tex
-OUTPUT report.log
+INPUT /Users/peterwind/Script/Learning/LaTeX/Template/Template.tex
+OUTPUT Template.log
 INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/base/size12.clo
@@ -108,11 +108,12 @@ INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/tools/array.sty
 INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/tools/array.sty
-OUTPUT report.aux
+INPUT ./Template.aux
+INPUT ./Template.aux
+INPUT Template.aux
+OUTPUT Template.aux
 INPUT ./logo1.jpg
 INPUT ./logo1.jpg
-INPUT ./logo1.jpg
-INPUT ./logo2.jpg
 INPUT ./logo2.jpg
 INPUT ./logo2.jpg
 INPUT /usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
@@ -127,5 +128,5 @@ INPUT /usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/
 INPUT /usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
-OUTPUT report.xdv
-INPUT report.aux
+OUTPUT Template.xdv
+INPUT Template.aux

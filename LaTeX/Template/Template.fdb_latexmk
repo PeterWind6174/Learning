@@ -1,11 +1,11 @@
 # Fdb version 4
-["xdvipdfmx"] 1763631326.53133 "report.xdv" "report.pdf" "report" 1763631326.65609 0
-  "report.xdv" 1763631448.3481 13592 58acb4e6165a629795a509d3d5b97a9d "xelatex"
+["xdvipdfmx"] 1763649057.58794 "Template.xdv" "Template.pdf" "Template" 1763649057.69835 0
+  "Template.xdv" 1763649057.54671 11164 9527039074b05e962bf77b0bc4896356 "xelatex"
   (generated)
-  "report.pdf"
+  "Template.pdf"
   (rewritten before read)
-["xelatex"] 1763631447.67334 "/Users/peterwind/Script/Learning/LaTeX/Report/report.tex" "report.xdv" "report" 1763631448.40807 2
-  "/Users/peterwind/Script/Learning/LaTeX/Report/report.tex" 1763631446.62137 5201 c293b10d6eceeca979b7a667319c2c77 ""
+["xelatex"] 1763649057.11993 "/Users/peterwind/Script/Learning/LaTeX/Template/Template.tex" "Template.xdv" "Template" 1763649057.6977 0
+  "/Users/peterwind/Script/Learning/LaTeX/Template/Template.tex" 1763648937.14545 5310 3fd344a285e63013318839aba36eb4e0 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
@@ -72,13 +72,12 @@
   "/usr/local/texlive/2025basic/texmf-dist/web2c/texmf.cnf" 1749313668 42213 4e2ca030e8e2640502016e9e45868dcb ""
   "/usr/local/texlive/2025basic/texmf-var/web2c/xetex/xelatex.fmt" 1763537654 5410926 cd12d4087f48de41c40c66d5fe8d9ad2 ""
   "/usr/local/texlive/2025basic/texmf.cnf" 1741448314 628 81d1ada0f601fb1ffa62f1323192d946 ""
-  "circuit.png" 0 -1 0 ""
+  "Template.aux" 1763649057.54575 1649 2b6dfa4d4b9c061fc4d626d18a8e94bb "xelatex"
+  "Template.tex" 1763648937.14545 5310 3fd344a285e63013318839aba36eb4e0 ""
   "logo1.jpg" 1763627676.49186 27228 18ec87c382e4b6754b5ed9c3cd708481 ""
   "logo2.jpg" 1763627683.56709 29945 bec18f3daa04b44f631b8b7e6311eaf4 ""
-  "report.aux" 1763631448.34704 1478 978e5cf326be67a2eb2b4968883b064d "xelatex"
-  "report.tex" 1763631446.62137 5201 c293b10d6eceeca979b7a667319c2c77 ""
   (generated)
-  "report.aux"
-  "report.log"
-  "report.xdv"
+  "Template.aux"
+  "Template.log"
+  "Template.xdv"
   (rewritten before read)

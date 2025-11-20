@@ -1,7 +1,6 @@
 \documentclass[12pt, a4paper]{article}
 
 % --- 1. 核心宏包配置 ---
-% fontset=mac: 自动适配 macOS 字体 (宋体/黑体)
 \usepackage[fontset=mac, heading=true]{ctex}
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx} % 图片支持
@@ -21,26 +20,25 @@
 % --- 3. 全局段落设置 ---
 \setlength{\parindent}{2em} % 首行缩进 2 字符
 \setstretch{1.25}           % 行间距 1.25 倍
+\pagestyle{plain}           % [关键修改] 强制只有底部页码，去除左上角页眉
 
-% --- 4. 标题格式设置 (关键修改：全部改为宋体) ---
+% --- 4. 标题格式设置 (宋体 + 编号格式) ---
 \ctexset{
-  % 一级标题设置 (例如：一、实验目的)
+  % 一级标题 (例如：一、实验目的)
   section = {
     number = \chinese{section},
-    % \rmfamily: 强制使用宋体 (Roman Family)
     format = \Large\bfseries\rmfamily, 
     aftername = 、,
-    indent = 0em,                % 顶格
+    indent = 0em,
     beforeskip = 1.5em,
     afterskip = 1em
   },
-  % 二级标题设置 (例如：1、硬件设备)
+  % 二级标题 (例如：1、硬件设备)
   subsection = {
     number = \arabic{subsection},
-    % \rmfamily: 强制使用宋体
     format = \large\bfseries\rmfamily, 
     aftername = 、,
-    indent = 2em,                % 缩进 2 字符
+    indent = 2em,
     beforeskip = 1em,
     afterskip = 0.5em
   }
@@ -55,10 +53,13 @@
 \captionsetup[table]{position=top}
 \captionsetup[figure]{position=bottom}
 
-% --- 7. 封面下划线命令 ---
-\newcommand{\coverinfo}[2]{%
-    \makebox[4.5em][s]{\textbf{\large #1}}：
-    \underline{\makebox[16em][l]{\hspace{0.5em}\large #2}}
+% --- 7. 封面下划线命令 (关键修改：支持隐藏冒号) ---
+% 参数1(可选): 标点符号，默认为冒号
+% 参数2: 标签文字
+% 参数3: 下划线内容
+\newcommand{\coverinfo}[3][ ：]{%
+    \makebox[4.5em][s]{\textbf{\large #2}}#1 % 标签 + 标点(可选)
+    \underline{\makebox[16em][l]{\hspace{0.5em}\large #3}} % 下划线
     \par\vspace{1.2em}
 }
 
@@ -69,12 +70,20 @@
     \centering
     \vspace*{1cm}
     
-    % [已恢复] Logo 图片
-    % 请确保 report.tex 同级目录下存在 logo1.jpg 和 logo2.jpg
-    % 如果图片文件名不同，请修改大括号内的文件名
-    \includegraphics[height=2.5cm]{logo1.jpg} \\
-    \vspace{0.5em}
-    \includegraphics[height=2.5cm]{logo2.jpg}
+    % --- Logo 图片处理 ---
+    \IfFileExists{logo1.jpg}{
+        \includegraphics[height=3cm]{logo1.jpg}
+    }{
+        \framebox[3cm]{\parbox[c][3cm][c]{3cm}{\centering \small 校徽/Logo 1}}
+    }
+    
+    \par\vspace{0.5em}
+    
+    \IfFileExists{logo2.jpg}{
+        \includegraphics[height=3cm]{logo2.jpg}
+    }{
+        \framebox[3cm]{\parbox[c][3cm][c]{3cm}{\centering \small 院徽/Logo 2}}
+    }
     
     \vspace{1cm}
     
@@ -84,14 +93,15 @@
     
     \begin{center}
         \coverinfo{课程名称}{电子电工实验（一）}
-        \coverinfo{实验项目}{戴维南定理的验证}
-        \coverinfo{ }{ } 
+        \coverinfo{实验项目}{实验内容}
+        \coverinfo[\phantom{：}]{ }{实验内容} 
+        
         \coverinfo{学　　院}{通信与信息工程学院}
         \coverinfo{班　　级}{B240130}
         \coverinfo{学　　号}{B24013026}
         \coverinfo{姓　　名}{屠宇航}
         \coverinfo{指导教师}{张潇萧}
-        \coverinfo{学　　期}{2025-2026 学年第 1 学期}
+        \coverinfo{学　　期}{2025-2026学年\quad 第 1 学期}
     \end{center}
 
 \end{titlepage}
@@ -102,8 +112,10 @@
 \section{实验目的}
 
 \begin{enumerate}
-    \item 验证戴维南定理的正确性，加深对等效电压源定理的理解。
-    \item 掌握测量有源二端网络等效参数（开路电压 $U_{\text{oc}}$ 和等效电阻 $R_{\text{eq}}$）的方法。
+    \item 目的1
+    \item 目的2
+    \item 目的3
+    \item 目的4
 \end{enumerate}
 
 \section{主要仪器设备及软件}
@@ -112,47 +124,61 @@
 \begin{itemize}
     \item 函数信号发生器
     \item 直流稳压电源
-    \item 示波器、万用表、实验箱、阻容元件及导线若干
+    \item 示波器、万用表
+    \item 实验箱、阻容元件及导线若干
 \end{itemize}
 
 \subsection{软件环境}
 \begin{itemize}
     \item Multisim 14
+    \item Matlab R2024b
+    \item \LaTeX{} 
 \end{itemize}
 
 \section{实验原理/设计过程}
 
-任何一个线性有源二端网络，对外电路而言，都可以用一个电压源和电阻串联的组合来等效代替。
+内容
 
 \begin{equation*}
     I = \frac{U_{\text{oc}}}{R_{\text{eq}} + R_L}
 \end{equation*}
 
-其中：$U_{\text{oc}}$ 是二端网络的开路电压；$R_{\text{eq}}$ 是二端网络中所有独立源置零（电压源短路，电流源开路）后，从端口看进去的等效电阻。
-
+行内公式$U_{\text{oc}}$ 
 \newpage
 
 \section{实验电路图}
 
 \begin{figure}[htbp]
     \centering
-    % 请修改为您实际的电路图文件名
-    \includegraphics[width=0.8\textwidth]{circuit.png} 
-    \caption{戴维南定理验证电路图}
+    % 智能回退逻辑：有图片显示图片，无图片显示提示框
+    \IfFileExists{circuit.png}{
+        \includegraphics[width=0.8\textwidth]{circuit.png}
+    }{
+        \setlength{\fboxsep}{10pt}
+        \setlength{\fboxrule}{1pt}
+        \fbox{\parbox[c][6cm][c]{0.8\textwidth}{
+            \centering 
+            \textbf{图片缺失提示} \\ 
+            \vspace{1em}
+            请将您的电路截图命名为 \texttt{circuit.png} \\
+            并放入与 \texttt{.tex} 文件相同的文件夹中。
+        }}
+    }
+    \caption{实验电路图}
 \end{figure}
 
 \newpage
 
 \section{实验结果和实验数据分析}
 
-\subsection{实验数据记录}
+\subsection{任务1}
 
 \begin{table}[htbp]
     \centering
     \caption{戴维南等效参数测量数据}
     \begin{tabular}{cccc}
         \toprule
-        \textbf{测量项目} & \textbf{计算值} & \textbf{测量值} & \textbf{误差 (\%)} \\
+        \textbf{测量项目} & \textbf{计算值} & \textbf{测量值} & \textbf{误差 ($\Omega$)} \\
         \midrule
         $U_{\text{oc}} (V)$ & 12.0 & 11.95 & 0.42 \\
         $R_{\text{eq}} (k\Omega)$ & 1.0 & 0.99 & 1.0 \\
@@ -160,20 +186,19 @@
     \end{tabular}
 \end{table}
 
-\subsection{数据分析}
+\subsection{任务2}
 
-从上述表格可以看出，测量值与理论计算值基本吻合。
+任务二
 
 \newpage
 
 \section{实验小结}
-
-通过本次实验，我成功掌握了戴维南定理的验证方法。
+\subsection{思考题1}
+\subsection{思考题2}
 
 \newpage
 
 \section{附录}
-
-在此处附上原始数据记录单。
+仿真截图
 
 \end{document}
