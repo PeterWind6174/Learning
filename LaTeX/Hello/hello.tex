@@ -1,0 +1,30 @@
+\documentclass[12pt]{article} % 文档类型：article，正文字号12pt
+
+\usepackage[margin=1in]{geometry} % 页边距
+\usepackage{amsmath, amssymb}     % 数学公式
+\usepackage{hyperref}             % 超链接（目录/引用可点击）
+
+\title{My First \LaTeX{} Document} % 标题
+\author{PeterWind}                 % 作者
+\date{\today}                      % 日期（自动填今天）
+
+\begin{document} % 正文开始
+
+\maketitle % 生成标题
+
+\section{Introduction}
+This is my first \LaTeX{} document. \LaTeX{} is great for writing
+mathematical documents. For example, here is Einstein's famous formula:
+\[
+E = mc^2.
+\]
+
+\section{A Subsection Example}
+\subsection{Lists}
+We can create lists:
+\begin{itemize}
+  \item First item
+  \item Second item
+\end{itemize}
+
+\end{document} % 正文结束

@@ -1,0 +1,55 @@
+\documentclass[fontset=mac]{ctexart} % 1. 去掉 scheme=plain，恢复中文目录和标题命名
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{refs.bib}
+
+% 2. 【核心修改】使用 ctexset 将一级标题设置为靠左
+\ctexset{
+    section = {
+        format = \Large\bfseries\raggedright % raggedright 表示靠左对齐
+    }
+}
+
+\title{某课程实验报告}
+\author{张三 \quad 学号：2025xxxx}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{引言}
+近年来，关于酶催化反应动力学的研究十分广泛\cite{michaelis1913}，这为本实验提供了理论基础。
+
+\section{实验原理}
+根据文献\cite{lineweaver1934} 中提出的方法，可对酶动力学参数进行线性拟合。
+
+\section{实验结果与讨论}
+如表~\ref{tab:data} 所示，不同底物浓度下的反应速率如下。
+
+\begin{table}[htbp]
+  \centering
+  \caption{不同底物浓度下的反应速率}
+  \label{tab:data}
+  \begin{tabular}{ccc}
+    \toprule
+    底物浓度 / \(\mathrm{mmol\cdot L^{-1}}\) & 反应速率 / \(\mathrm{mol\cdot L^{-1}\cdot s^{-1}}\) \\
+    \midrule
+    1.0 & 0.12 \\
+    2.0 & 0.19 \\
+    4.0 & 0.25 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{结论}
+本实验结果与文献报道结果基本一致\cite{smith2020}。
+
+\printbibliography
+
+\end{document}
