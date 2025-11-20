@@ -1,55 +1,179 @@
-\documentclass[fontset=mac]{ctexart} % 1. 去掉 scheme=plain，恢复中文目录和标题命名
+\documentclass[12pt, a4paper]{article}
 
-\usepackage[margin=2.5cm]{geometry}
-\usepackage{amsmath, amssymb}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage[backend=biber,style=authoryear]{biblatex}
-\addbibresource{refs.bib}
+% --- 1. 核心宏包配置 ---
+% fontset=mac: 自动适配 macOS 字体 (宋体/黑体)
+\usepackage[fontset=mac, heading=true]{ctex}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{graphicx} % 图片支持
+\usepackage{amsmath}  % 数学公式
+\usepackage{booktabs} % 三线表
+\usepackage{caption}  % 图表标题
+\usepackage{setspace} % 行间距
+\usepackage{enumitem} % 列表
+\usepackage{array}    % 表格
 
-% 2. 【核心修改】使用 ctexset 将一级标题设置为靠左
+% --- 2. 字体设置 (macOS 优化) ---
+\setmainfont{Times New Roman}
+% 开启伪粗体，确保宋体能显示加粗效果
+\setCJKmainfont[AutoFakeBold=true]{Songti SC} 
+\setCJKsansfont[AutoFakeBold=true]{Heiti SC} 
+
+% --- 3. 全局段落设置 ---
+\setlength{\parindent}{2em} % 首行缩进 2 字符
+\setstretch{1.25}           % 行间距 1.25 倍
+
+% --- 4. 标题格式设置 (关键修改：全部改为宋体) ---
 \ctexset{
-    section = {
-        format = \Large\bfseries\raggedright % raggedright 表示靠左对齐
-    }
+  % 一级标题设置 (例如：一、实验目的)
+  section = {
+    number = \chinese{section},
+    % \rmfamily: 强制使用宋体 (Roman Family)
+    format = \Large\bfseries\rmfamily, 
+    aftername = 、,
+    indent = 0em,                % 顶格
+    beforeskip = 1.5em,
+    afterskip = 1em
+  },
+  % 二级标题设置 (例如：1、硬件设备)
+  subsection = {
+    number = \arabic{subsection},
+    % \rmfamily: 强制使用宋体
+    format = \large\bfseries\rmfamily, 
+    aftername = 、,
+    indent = 2em,                % 缩进 2 字符
+    beforeskip = 1em,
+    afterskip = 0.5em
+  }
 }
 
-\title{某课程实验报告}
-\author{张三 \quad 学号：2025xxxx}
-\date{\today}
+% --- 5. 列表缩进修正 ---
+\setlist[enumerate]{leftmargin=2em, labelsep=0.5em, itemindent=2em}
+\setlist[itemize]{leftmargin=2em, labelsep=0.5em, itemindent=2em}
+
+% --- 6. 图表标题设置 ---
+\captionsetup{labelsep=space}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+
+% --- 7. 封面下划线命令 ---
+\newcommand{\coverinfo}[2]{%
+    \makebox[4.5em][s]{\textbf{\large #1}}：
+    \underline{\makebox[16em][l]{\hspace{0.5em}\large #2}}
+    \par\vspace{1.2em}
+}
 
 \begin{document}
 
-\maketitle
-\tableofcontents
+% ================= 封面页 =================
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    % [已恢复] Logo 图片
+    % 请确保 report.tex 同级目录下存在 logo1.jpg 和 logo2.jpg
+    % 如果图片文件名不同，请修改大括号内的文件名
+    \includegraphics[height=2.5cm]{logo1.jpg} \\
+    \vspace{0.5em}
+    \includegraphics[height=2.5cm]{logo2.jpg}
+    
+    \vspace{1cm}
+    
+    {\fontsize{42pt}{50pt}\selectfont \bfseries\rmfamily 电工电子实验报告 \par}
+    
+    \vspace{3cm}
+    
+    \begin{center}
+        \coverinfo{课程名称}{电子电工实验（一）}
+        \coverinfo{实验项目}{戴维南定理的验证}
+        \coverinfo{ }{ } 
+        \coverinfo{学　　院}{通信与信息工程学院}
+        \coverinfo{班　　级}{B240130}
+        \coverinfo{学　　号}{B24013026}
+        \coverinfo{姓　　名}{屠宇航}
+        \coverinfo{指导教师}{张潇萧}
+        \coverinfo{学　　期}{2025-2026 学年第 1 学期}
+    \end{center}
 
-\section{引言}
-近年来，关于酶催化反应动力学的研究十分广泛\cite{michaelis1913}，这为本实验提供了理论基础。
+\end{titlepage}
 
-\section{实验原理}
-根据文献\cite{lineweaver1934} 中提出的方法，可对酶动力学参数进行线性拟合。
+% ================= 正文开始 =================
+\setcounter{page}{1}
 
-\section{实验结果与讨论}
-如表~\ref{tab:data} 所示，不同底物浓度下的反应速率如下。
+\section{实验目的}
+
+\begin{enumerate}
+    \item 验证戴维南定理的正确性，加深对等效电压源定理的理解。
+    \item 掌握测量有源二端网络等效参数（开路电压 $U_{\text{oc}}$ 和等效电阻 $R_{\text{eq}}$）的方法。
+\end{enumerate}
+
+\section{主要仪器设备及软件}
+
+\subsection{硬件设备}
+\begin{itemize}
+    \item 函数信号发生器
+    \item 直流稳压电源
+    \item 示波器、万用表、实验箱、阻容元件及导线若干
+\end{itemize}
+
+\subsection{软件环境}
+\begin{itemize}
+    \item Multisim 14
+\end{itemize}
+
+\section{实验原理/设计过程}
+
+任何一个线性有源二端网络，对外电路而言，都可以用一个电压源和电阻串联的组合来等效代替。
+
+\begin{equation*}
+    I = \frac{U_{\text{oc}}}{R_{\text{eq}} + R_L}
+\end{equation*}
+
+其中：$U_{\text{oc}}$ 是二端网络的开路电压；$R_{\text{eq}}$ 是二端网络中所有独立源置零（电压源短路，电流源开路）后，从端口看进去的等效电阻。
+
+\newpage
+
+\section{实验电路图}
+
+\begin{figure}[htbp]
+    \centering
+    % 请修改为您实际的电路图文件名
+    \includegraphics[width=0.8\textwidth]{circuit.png} 
+    \caption{戴维南定理验证电路图}
+\end{figure}
+
+\newpage
+
+\section{实验结果和实验数据分析}
+
+\subsection{实验数据记录}
 
 \begin{table}[htbp]
-  \centering
-  \caption{不同底物浓度下的反应速率}
-  \label{tab:data}
-  \begin{tabular}{ccc}
-    \toprule
-    底物浓度 / \(\mathrm{mmol\cdot L^{-1}}\) & 反应速率 / \(\mathrm{mol\cdot L^{-1}\cdot s^{-1}}\) \\
-    \midrule
-    1.0 & 0.12 \\
-    2.0 & 0.19 \\
-    4.0 & 0.25 \\
-    \bottomrule
-  \end{tabular}
+    \centering
+    \caption{戴维南等效参数测量数据}
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{测量项目} & \textbf{计算值} & \textbf{测量值} & \textbf{误差 (\%)} \\
+        \midrule
+        $U_{\text{oc}} (V)$ & 12.0 & 11.95 & 0.42 \\
+        $R_{\text{eq}} (k\Omega)$ & 1.0 & 0.99 & 1.0 \\
+        \bottomrule
+    \end{tabular}
 \end{table}
 
-\section{结论}
-本实验结果与文献报道结果基本一致\cite{smith2020}。
+\subsection{数据分析}
 
-\printbibliography
+从上述表格可以看出，测量值与理论计算值基本吻合。
+
+\newpage
+
+\section{实验小结}
+
+通过本次实验，我成功掌握了戴维南定理的验证方法。
+
+\newpage
+
+\section{附录}
+
+在此处附上原始数据记录单。
 
 \end{document}
