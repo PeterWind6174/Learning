@@ -94,14 +94,14 @@
 
 // --- 2. 信息填写 ---
 #show: doc => report(
-  course: "电子电工实验（一）",
-  project: "戴维南定理的验证",
-  college: "通信与信息工程学院",
-  class_id: "B240130",
-  student_id: "B24013026",
-  author: "屠宇航",
-  teacher: "张潇萧",
-  semester: "2025-2026学年  第 1 学期",
+  course: "课程名称",
+  project: "实验项目",
+  college: "学院名称",
+  class_id: "班级",
+  student_id: "学号",
+  author: "姓名",
+  teacher: "教师姓名",
+  semester: "学期",
   doc
 )
 
